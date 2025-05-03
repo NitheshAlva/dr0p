@@ -1,103 +1,124 @@
-import Image from "next/image";
+'use client';
+
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { FileText, Upload} from "lucide-react"
+import { useTheme } from "next-themes";
+import { FlipWords } from "@/components/ui/flip-words";
+import { FeatureSteps } from "@/components/feature-section";
+import { SlideButton } from "@/components/ui/get-started-button";
+import Footer from "@/components/Footer";
+import { features } from "@/data/features";
+import { Feature } from "@/components/Feature";
+import { steps } from "@/data/steps";
+import {Sparkles} from '@/components/Sparkles'
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const theme = useTheme();
+
+  return (
+    <div className=" flex flex-col min-h-screen">
+      {/* Hero Section */}
+      <section className="min-h-screen mt-10 py-20 md:py-28">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center space-y-4 text-center">
+            <div className="space-y-2">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
+                Instant Sharing, Zero Hassle.
+              </h1>
+              <div className="mt-15 mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+                <b>dr0p</b> lets you send notes and files between devices effortlessly.
+                <br className="hidden sm:inline" />
+                No<FlipWords className="font-large" words={['signups', 'fuss']}/>just type, upload, and share.
+              </div>
+            </div>
+            <div className=" flex flex-col sm:flex-row gap-4 mt-12 z-10 ">
+              <Link href="/note">
+                <Button size="lg" className="gap-2 cursor-pointer">
+                  <FileText className="h-5 w-5" />
+                  Create a Note
+                </Button>
+              </Link>
+              <Link href="/file">
+                <Button size="lg" variant="outline" className="gap-2 cursor-pointer">
+                  <Upload className="h-5 w-5" />
+                  Upload a File
+                </Button>
+              </Link>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+        <div className="relative -mt-32 h-96 w-full overflow-hidden">
+          {/* Gradient background with mask */}
+          <div className="absolute inset-0 [mask-image:radial-gradient(50%_50%,white,transparent)] before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_bottom_center,#8350e8,transparent_70%)] before:opacity-40 after:absolute after:-left-1/2 after:top-1/2 after:aspect-[1/0.7] after:w-[200%] after:rounded-[100%] after:border-t after:border-[#7876c566] after:bg-zinc-900"></div>
+          
+          {/* Sparkles contained within parent */}
+          <div className="absolute inset-0 [mask-image:radial-gradient(50%_50%,white,transparent_85%)]">
+            <Sparkles
+              className="w-full h-full"
+              lightModeColor="rgba(51, 51, 51, 0.7)"
+              darkModeColor="rgba(255, 255, 255, 0.7)"
+              size={1.5}
+              density={1200}
+              speed={0.8}
+              opacity={0.7}
+              options={{
+                fullScreen: {
+                  enable: false,
+                  zIndex: -1
+                }
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-12 md:py-16 ">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="space-y-2 flex items-center">
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl pr-2">Why dr0p?</h2>
+              <p className="max-w-[700px] text-muted-foreground md:text-xl">
+                Simple tools for sharing content instantly
+              </p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10 py-10 max-w-7xl mx-auto">
+            {features.map((feature, index) => (
+              <Feature key={feature.title} {...feature} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="py-12 md:py-16">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="space-y-2">
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">How dr0p Makes Sharing Simple</h2>
+              <p className="max-w-[700px] text-muted-foreground md:text-xl">
+              Share content in just a few seconds
+              </p>
+            </div>
+          </div>
+          <FeatureSteps
+            features={steps}
+            title=""
+            autoPlayInterval={5000}
+            imageHeight="h-[450px]"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+          <div className="flex justify-center mt-12">
+            <Link href="/note/" >
+              <SlideButton/>
+            </Link>
+          </div>
+        </div>
+      </section>
+      <Footer />
     </div>
-  );
+  )
 }

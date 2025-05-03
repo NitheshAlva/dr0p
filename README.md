@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# dr0p
 
-First, run the development server:
+A **no-login**, fast-sharing web app for instant text and file drops — accessible from any device.
+
+![dr0p logo](public/drop-logo.png)
+
+---
+
+## ✨ Features
+
+- 📋 Instantly share **text notes** and **files** with just a name — no login required.
+- 🔒 **Optional password protection** for private drops.
+- ⏰ Set **auto-expiry times** for each drop (from minutes to days).
+- 🌐 Accessible from any device by visiting `/note/name` or `/file/name`.
+- 🗑️ Expired content is automatically removed (cleanup handled by database cron).
+
+---
+
+
+
+## 🧠 How It Works
+
+- Use `POST /api/note` or `POST /api/file` to create drops.
+- Access drops via `/note/[name]` or `/file/[name]`.
+- On access:
+  - If the drop exists:
+    - 🔓 If unprotected → content is shown.
+    - 🔐 If protected → user is prompted for password.
+- Notes are stored in **PostgreSQL**.
+- Files are stored in **Amazon S3**, and metadata in **PostgreSQL**.
+- Expiry logic is enforced:
+  - On access (content won't be shown if expired).
+  - Via a background job that runs every minute to delete expired data.
+
+---
+
+## 📦 Directory Structure
+
+```
+
+.
+├── app/
+│   ├── page.tsx                # Landing page ("/")
+│   ├── file/
+│   │   ├── page.tsx            # File input page ("/file")
+│   │   └── [name]/
+│   │       └── page.tsx        # File view/download ("/file/:name")
+│   ├── note/
+│   │   ├── page.tsx            # Note input page ("/note")
+│   │   └── [name]/
+│   │       └── page.tsx        # Note view ("/note/:name")
+│   └── layout.tsx              # App-wide layout
+├── lib/
+│   ├── db.ts                   # DB connection
+│   └── s3.ts                   # S3 helper functions
+├── public/                     # Static assets (logo, etc.)
+├── styles/                     # CSS/SCSS styles
+└── README.md
+
+````
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repo
+
+```bash
+git clone https://github.com/yourusername/dr0p.git
+cd dr0p
+````
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Setup Environment Variables
+
+Create a `.env.local` file in the root directory and add the following:
+
+```env
+# .env.local
+DATABASE_URL=postgresql://<username>:<password>@<host>/<db>
+AWS_S3_BUCKET_NAME=your-s3-bucket-name
+AWS_S3_ACCESS_KEY=your-access-key
+AWS_S3_SECRET_KEY=your-secret-key
+```
+
+> Replace values with your actual database and AWS credentials.
+
+### 4. Start the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:3000` to view the app locally.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧪 Example URLs
 
-## Learn More
+* 📝 Text Note: [https://dr0p.live/note/meeting](https://dr0p.live/note/meeting)
+* 📁 File Drop: [https://dr0p.live/file/report](https://dr0p.live/file/report)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📄 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+MIT — feel free to use, modify, and share.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🤝 Contributions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+PRs welcome! If you have ideas, bug fixes, or enhancements, feel free to open an issue or submit a pull request.
+
+---
+
+
+
