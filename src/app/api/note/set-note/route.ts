@@ -23,7 +23,7 @@ export const POST = async (request:Request)=>{
 
         const password_hash = isProtected? await bcrypt.hash(password,10):null
         const expires_at=new Date(Date.now() + expiry)
-        const newNote = await prisma.notes.create({
+        await prisma.notes.create({
             data:{
                 name,
                 content,

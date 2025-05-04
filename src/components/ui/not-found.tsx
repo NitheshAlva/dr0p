@@ -2,6 +2,7 @@
 import {  ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
+import Link from 'next/link'
 
 interface NotFoundProps {
   title?: string
@@ -47,7 +48,7 @@ export function NotFound({
           </div>
         </Button>
         <Button className="-order-1 sm:order-none" asChild>
-          <a href="/">Take me home</a>
+          <Link href="/">Take me home</Link>
         </Button>
       </div>
     </div>

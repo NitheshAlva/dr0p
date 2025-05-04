@@ -66,7 +66,7 @@ function Page() {
     }
     
     getInfo()
-  }, [])
+  },[name])
 
  // Update expiry time display
  useEffect(() => {
@@ -82,7 +82,7 @@ function Page() {
 
     return () => clearInterval(interval) //cleanup so that there wont be multiple intervals running
   }
-}, [file])
+}, [file?.expires_at])
 
   // Function to fetch unprotected file content
   const fetchFileContent = async () => {
@@ -100,15 +100,7 @@ function Page() {
     }
   }
 
-  // Copy file content to clipboard
-  const copyToClipboard = () => {
-    if (file?.content) {
-      navigator.clipboard
-        .writeText(file.content)
-        .then(() => toast.success("Content copied to clipboard"))
-        .catch(() => toast.error("Failed to copy content"))
-    }
-  }
+  
 
   // Handle password submission
   const onSubmit = async (data: z.infer<typeof protectedSchema>) => {
@@ -273,7 +265,7 @@ if (isFileProtected) {
             </Badge>
             <div className="flex items-center text-xs text-muted-foreground">
                 <Clock className="mr-1 h-3 w-3" />
-                Expires {Date.now()>new Date(file?.expires_at).getMilliseconds()?' after view':formattedExpiry}
+                Expires {new Date(file?.expires_at) < new Date()?' after view':formattedExpiry}
             </div>
             </div>
             <Button variant="outline" size="sm" onClick={() => window.open(file?.url)} className="h-8">

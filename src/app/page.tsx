@@ -3,7 +3,6 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { FileText, Upload} from "lucide-react"
-import { useTheme } from "next-themes";
 import { FlipWords } from "@/components/ui/flip-words";
 import { FeatureSteps } from "@/components/feature-section";
 import { SlideButton } from "@/components/ui/get-started-button";
@@ -14,8 +13,6 @@ import { steps } from "@/data/steps";
 import {Sparkles} from '@/components/Sparkles'
 
 export default function Home() {
-
-  const theme = useTheme();
 
   return (
     <div className=" flex flex-col min-h-screen">

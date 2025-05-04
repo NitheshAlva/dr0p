@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  output   = "../node_modules/generated"
 }
 
 datasource db {
@@ -9,19 +9,19 @@ datasource db {
 }
 
 model files {
-  id                String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  name              String    @unique
+  id                String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name              String   @unique
   file_key          String
-  file_type         String    @default("image/jpeg")
   original_filename String
   password_hash     String?
   expires_at        DateTime @db.Timestamp(6)
   created_at        DateTime @default(now()) @db.Timestamp(6)
+  file_type         String   @default("image/jpeg")
 }
 
 model notes {
-  id            String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  name          String    @unique
+  id            String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name          String   @unique
   content       String
   password_hash String?
   expires_at    DateTime @db.Timestamp(6)

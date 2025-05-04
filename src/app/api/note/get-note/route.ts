@@ -23,15 +23,16 @@ export const POST= async(request:Request)=>{
                 return NextResponse.json({success:false,message:"invalid password, try again"},{status:400})
         }
         if(note.expires_at.getTime()===note.created_at.getTime()){   
-            console.log("yess")
+            // console.log("yess")
             await prisma.notes.delete({
                 where:{name}
             })
         }
-        const {password_hash,created_at,...cleanNote}=note
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const {password_hash:_,created_at:__,...cleanNote}=note
         return NextResponse.json({success:true,note:cleanNote,message:"note fetched successfully"},{status:200})
     } catch (error) {
-        console.log("Error while getting info of "+name+" note: ",error)
+        console.log("Error while getting info of note: ",error)
         return  NextResponse.json({success:false,message:"Error while getting note"},{status:500})
     }
 }

@@ -50,7 +50,7 @@ export default function CreateNotePage() {
             Create or Access a Note
           </h1>
           <p className="mt-4 text-xl text-muted-foreground">
-            Type a name and click "Go to Note" to create or access it
+            Type a name and click &quot;Go to Note&quot; to create or access it
           </p>
           
           <div className="mt-8 w-full max-w-md">
@@ -82,7 +82,7 @@ export default function CreateNotePage() {
                 Example Use
               </h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li>• If you name your note <span className="font-medium">"shopping list"</span></li>
+                <li>• If you name your note <span className="font-medium">&quot;shopping list&quot;</span></li>
                 <li>• It will be accessible at <span className="font-medium">drop.live/note/shopping-list</span></li>
                 <li>• Share this URL with others to access</li>
                 <li>• Your note will be available until its expiration date</li>
@@ -94,7 +94,7 @@ export default function CreateNotePage() {
                 Tips
               </h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li>• Use simple, memorable names like <span className="font-medium">"shopping-list"</span></li>
+                <li>• Use simple, memorable names like <span className="font-medium">&quot;shopping-list&quot;</span></li>
                 <li>• Protect sensitive notes with a password</li>
                 <li>• Set an expiration date for temporary notes</li>
                 <li>• Special characters are not allowed and spaces will be converted to hyphens</li>

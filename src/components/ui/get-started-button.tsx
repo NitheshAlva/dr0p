@@ -3,7 +3,7 @@ import { ChevronRight } from "lucide-react";
 
 export function SlideButton({text="Get Started",onClick,disabled=false}:{text?:string,onClick?:()=>void,disabled?:boolean}) {
   return (
-    <Button onClick={onClick} className="group relative overflow-hidden cursor-pointer" size="lg">
+    <Button disabled={disabled} onClick={onClick} className="group relative overflow-hidden cursor-pointer" size="lg">
       <span className="mr-8 transition-opacity duration-500 group-hover:opacity-0">
         {text}
       </span>

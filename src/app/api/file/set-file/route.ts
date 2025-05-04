@@ -22,7 +22,7 @@ export const POST=async(request:Request)=>{
     
             const password_hash = isProtected? await bcrypt.hash(password,10):null
             const expires_at=new Date(Date.now() + expiry)
-            const newFile = await prisma.files.create({
+            await prisma.files.create({
                 data:{
                     name,
                     file_key:key,

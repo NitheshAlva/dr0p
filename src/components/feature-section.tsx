@@ -97,6 +97,7 @@ export function FeatureSteps({
                 (feature, index) =>
                   index === currentFeature && (
                     <motion.div
+                      id={imageHeight}
                       key={index}
                       className="absolute inset-0 rounded-lg overflow-hidden"
                       initial={{ y: 100, opacity: 0, rotateX: -20 }}

@@ -3,7 +3,6 @@ import { noteSchema } from '@/schema/note.schema'
 import React, { useEffect, useState } from 'react'
 import {useForm} from 'react-hook-form'
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useParams } from 'next/navigation'
 import axios from 'axios'
 import { toast } from 'sonner'
 import { Button } from "@/components/ui/button"
@@ -25,9 +24,7 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
   } from "@/components/ui/dialog"
-import { Label } from '@/components/ui/label'
 import {
     Select,
     SelectContent,
@@ -37,8 +34,7 @@ import {
   } from "@/components/ui/select"
 import { Checkbox } from '@/components/ui/checkbox'
 import { QRCodeSVG } from "qrcode.react"
-import { ArrowLeft, CheckCircle, Copy, ExternalLink, FileText, Lock, Plus, Settings, XCircle } from 'lucide-react'
-import Image from 'next/image'
+import { ArrowLeft, CheckCircle, Copy, ExternalLink, Lock, Plus, XCircle } from 'lucide-react'
 
 export default function NoteForm({name}:{name:string}) {
 
@@ -47,10 +43,6 @@ export default function NoteForm({name}:{name:string}) {
     const [showQR,setShowQR] = useState(false)
     const [openDialog, setOpenDialog] = useState(false)
     
-    useEffect(()=>{
-        validateName()
-    },[name])
-
     const form = useForm<z.infer<typeof noteSchema>>({
         resolver:zodResolver(noteSchema),
         defaultValues:{
@@ -61,15 +53,20 @@ export default function NoteForm({name}:{name:string}) {
             expiry:0
         }
     })
-    const isProtected = form.watch("isProtected");
+    
+    useEffect(()=>{
+        const validateName = async () => {
+            const isValid = await form.trigger("name");
+            if (!isValid) {
+              const fieldError = form.getFieldState("name").error;
+              setErrorMessage(fieldError?.message || "");
+            }
+          };
+        validateName()
+    },[form])
 
-    const validateName=async()=>{
-        const isValid= await form.trigger('name')
-        if(!isValid){
-            const fieldError = form.getFieldState('name').error;
-            setErrorMessage(fieldError?.message || '');
-        }
-    }
+    
+    const isProtected = form.watch("isProtected");
 
     const handleDialogOpen = async () => {
         const valid = await form.trigger('content')
@@ -82,7 +79,7 @@ export default function NoteForm({name}:{name:string}) {
         if(isSubmitting)return;
         setIsSubmitting(true)
         try {
-            const response = await axios.post("/api/note/set-note",data)
+            await axios.post("/api/note/set-note",data)
             toast.success("Note has been created")
             setShowQR(true)
             form.reset()

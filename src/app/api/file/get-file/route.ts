@@ -30,7 +30,8 @@ export const POST = async(request:Request)=>{
                     where:{name}
                 })
             }
-            const {password_hash,created_at,...cleanFile}=file
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            const {password_hash:_,created_at:__,...cleanFile}=file
 
             return NextResponse.json({success:true,url,file:cleanFile,message:" file fetched successfully"},{status:200})
         } catch (error) {

@@ -41,10 +41,6 @@ export default function FileForm({name}:{name:string}) {
     const [showQR, setShowQR] = useState(false)
     const [openDialog, setOpenDialog] = useState(false)
     
-    useEffect(() => {
-        validateName()
-    }, [name])
-
     const form = useForm<z.infer<typeof fileSchema>>({
         resolver: zodResolver(fileSchema),
         defaultValues: {
@@ -55,16 +51,20 @@ export default function FileForm({name}:{name:string}) {
             expiry: 0
         }
     })
+    
+    useEffect(() => {
+        const validateName = async () => {
+            const isValid = await form.trigger('name')
+            if (!isValid) {
+                const fieldError = form.getFieldState('name').error;
+                setErrorMessage(fieldError?.message || '');
+            }
+        }
+        validateName()
+    }, [form])
 
     const isProtected = form.watch("isProtected");
 
-    const validateName = async () => {
-        const isValid = await form.trigger('name')
-        if (!isValid) {
-            const fieldError = form.getFieldState('name').error;
-            setErrorMessage(fieldError?.message || '');
-        }
-    }
 
     const handleDialogOpen = async () => {
         const valid = await form.trigger('file')
@@ -83,7 +83,7 @@ export default function FileForm({name}:{name:string}) {
                   
             const urlResp = await axios.get(`/api/file/get-upload-url?fileName=${data.file[0].name}&contentLength=${contentLength}&contentType=${contentType}`)
             
-            const s3Resp = await axios.put(urlResp.data.data.url, data.file[0], {
+            await axios.put(urlResp.data.data.url, data.file[0], {
                 headers: {
                     'Content-Type': contentType, 
                     'Content-Length': contentLength, 
@@ -91,7 +91,7 @@ export default function FileForm({name}:{name:string}) {
                 }
             })
             
-            const resp = await axios.post('/api/file/set-file', {
+            await axios.post('/api/file/set-file', {
                 name: data.name,
                 password: data.password,
                 isProtected: data.isProtected,

@@ -82,7 +82,7 @@ export default function CreateFilePage() {
                 Example Use
               </h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li>• If you name your file <span className="font-medium">"resume"</span></li>
+                <li>• If you name your file <span className="font-medium">&quot;resume&quot;</span></li>
                 <li>• It will be accessible at <span className="font-medium">drop.live/file/resume</span></li>
                 <li>• Share this URL with others to access</li>
                 <li>• Your file will be available until its expiration date</li>

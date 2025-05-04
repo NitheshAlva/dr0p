@@ -3,7 +3,7 @@
 
 A **no-login**, fast-sharing web app for instant text and file drops — accessible from any device.
 
-![dr0p logo](public/drop-logo.png)
+<img src="public/logo-light-bgrm.png" alt="dr0p logo" width="150"/>
 
 ---
 
