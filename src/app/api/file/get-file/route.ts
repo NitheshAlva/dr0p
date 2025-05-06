@@ -30,10 +30,10 @@ export const POST = async(request:Request)=>{
                     where:{name}
                 })
             }
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const {password_hash:_,created_at:__,...cleanFile}=file
+            if(file.password_hash)
+                file.password_hash="11"
 
-            return NextResponse.json({success:true,url,file:cleanFile,message:" file fetched successfully"},{status:200})
+            return NextResponse.json({success:true,url,file,message:" file fetched successfully"},{status:200})
         } catch (error) {
             console.log("Error while getting info of "+name+" file: ",error)
             return  NextResponse.json({success:false,message:"Error while getting file"},{status:500})

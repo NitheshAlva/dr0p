@@ -10,7 +10,7 @@ export default function Footer() {
     <footer className="w-full relative py-16 overflow-hidden">
       
       {/* Content layer */}
-      <div className="container relative mx-auto px-6 z-10">
+      <div className="relative mx-auto px-6 z-10">
         {/* Top gradient line */}
         <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-200 to-transparent mb-12" />
         

@@ -127,25 +127,40 @@ function Page() {
 if (loading) {
   return (
     <div className="flex flex-col h-screen w-full pt-15">
-      {/* Skeleton for the top info bar */}
-      <div className="bg-secondary/20 border-b px-4 py-2 h-14 flex items-center justify-between">
+      {/* Top bar skeleton */}
+      <div className="bg-secondary/20 border-b px-4 py-2 h-12 flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <Skeleton className="h-5 w-40" />
-          <Skeleton className="h-6 w-20" />
-          <Skeleton className="h-4 w-32" />
+          <div className="flex items-center space-x-2">
+            <Skeleton className="h-4 w-4 rounded-full" />
+            <Skeleton className="h-5 w-24" />
+          </div>
+          <Skeleton className="h-6 w-16" />
+          <Skeleton className="h-4 w-28" />
         </div>
-        <Skeleton className="h-8 w-20" />
+        <Skeleton className="h-8 w-24" />
       </div>
 
-      {/* Skeleton for the content area */}
-      <div className="flex-1 p-4 bg-muted/30">
-        <div className="space-y-4 max-w-full">
-          <Skeleton className="h-4 w-full" />
-          <Skeleton className="h-4 w-full" />
-          <Skeleton className="h-4 w-3/4" />
-          <Skeleton className="h-4 w-5/6" />
-          <Skeleton className="h-4 w-full" />
-          <Skeleton className="h-4 w-2/3" />
+      {/* Main content area */}
+      <div className="flex-1 overflow-auto bg-muted/30 p-4 flex flex-col items-center justify-center">
+        <div className="bg-background rounded-lg shadow-lg max-w-2xl w-full overflow-hidden">
+          <div className="border-b p-6 flex justify-center items-center min-h-[240px]">
+            <Skeleton className="h-48 w-96" />
+          </div>
+          <div className="p-6 space-y-4">
+            <div className="flex justify-between items-center">
+              <Skeleton className="h-5 w-32" />
+              <Skeleton className="h-6 w-20" />
+            </div>
+            <div className="space-y-2">
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-3/4" />
+              <Skeleton className="h-4 w-2/3" />
+              <Skeleton className="h-4 w-1/2" />
+            </div>
+            <div className="pt-4">
+              <Skeleton className="h-10 w-full" />
+            </div>
+          </div>
         </div>
       </div>
     </div>

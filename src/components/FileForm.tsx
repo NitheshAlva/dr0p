@@ -34,6 +34,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from 'zod'
 import { fileSchema } from '@/schema/file.schema'
+import {lookup} from 'mime-types'
 
 export default function FileForm({name}:{name:string}) {
     const [errorMessage, setErrorMessage] = useState('')
@@ -78,7 +79,7 @@ export default function FileForm({name}:{name:string}) {
         setIsSubmitting(true)
         try {
             const fileName = data.file[0].name,
-                  contentType = data.file[0].type,
+                  contentType = data.file[0].type||lookup(fileName),
                   contentLength = data.file[0].size
                   
             const urlResp = await axios.get(`/api/file/get-upload-url?fileName=${data.file[0].name}&contentLength=${contentLength}&contentType=${contentType}`)
@@ -243,7 +244,7 @@ export default function FileForm({name}:{name:string}) {
                                                     onClick={() => document.getElementById('file-upload')?.click()}
                                                     className="text-xs md:text-sm"
                                                 >
-                                                    Select File
+                                                    {value?.length ? "Change" : "Select"} File
                                                 </Button>
                                             </div>
                                         </div>

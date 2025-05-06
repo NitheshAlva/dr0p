@@ -11,7 +11,7 @@ export const features = [
     },
     {
       title: "Send Notes or Files",
-      description: "Whether it’s quick thoughts or large documents, dr0p handles it all — effortlessly.",
+      description: "Whether it’s quick thoughts or documents, dr0p handles it all — effortlessly.",
       icon: <IconTerminal2 />,
     },
     {
@@ -21,7 +21,7 @@ export const features = [
     },
     {
       title: "Set Expiry Times",
-      description: "Auto-delete notes and files after 1 hour, 1 day, or never — your call.",
+      description: "Auto-delete notes and files after 1 hour, 10 hours, or 1 day — your call.",
       icon: <IconEaseInOut />,
     },
     {

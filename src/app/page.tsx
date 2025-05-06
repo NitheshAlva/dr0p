@@ -18,7 +18,7 @@ export default function Home() {
     <div className=" flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="min-h-screen mt-10 py-20 md:py-28">
-        <div className="container px-4 md:px-6">
+        <div className="px-4 md:px-6">
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
@@ -73,7 +73,7 @@ export default function Home() {
 
       {/* Features Section */}
       <section className="py-12 md:py-16 ">
-        <div className="container px-4 md:px-6">
+        <div className="px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2 flex items-center">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl pr-2">Why dr0p?</h2>
@@ -92,7 +92,7 @@ export default function Home() {
 
       {/* How It Works Section */}
       <section className="py-12 md:py-16">
-        <div className="container px-4 md:px-6">
+        <div className="px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">How dr0p Makes Sharing Simple</h2>

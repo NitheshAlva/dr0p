@@ -28,9 +28,9 @@ export const POST= async(request:Request)=>{
                 where:{name}
             })
         }
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const {password_hash:_,created_at:__,...cleanNote}=note
-        return NextResponse.json({success:true,note:cleanNote,message:"note fetched successfully"},{status:200})
+        if(note.password_hash)
+            note.password_hash='1'
+        return NextResponse.json({success:true,note,message:"note fetched successfully"},{status:200})
     } catch (error) {
         console.log("Error while getting info of note: ",error)
         return  NextResponse.json({success:false,message:"Error while getting note"},{status:500})
