@@ -12,7 +12,7 @@ A **no-login**, fast-sharing web app for instant text and file drops — accessi
 - 📋 Instantly share **text notes** and **files** with just a name — no login required.
 - 🔒 **Optional password protection** for private drops.
 - ⏰ Set **auto-expiry times** for each drop (from minutes to days).
-- 🌐 Accessible from any device by visiting `/note/name` or `/file/name`.
+- 🌐 Accessible from any device by visiting `/n/name` or `/f/name`.
 - 🗑️ Expired content is automatically removed (cleanup handled by database cron).
 
 ---
@@ -22,7 +22,7 @@ A **no-login**, fast-sharing web app for instant text and file drops — accessi
 ## 🧠 How It Works
 
 - Use `POST /api/note` or `POST /api/file` to create drops.
-- Access drops via `/note/[name]` or `/file/[name]`.
+- Access drops via `/n/[name]` or `/f/[name]`.
 - On access:
   - If the drop exists:
     - 🔓 If unprotected → content is shown.
@@ -42,14 +42,14 @@ A **no-login**, fast-sharing web app for instant text and file drops — accessi
 .
 ├── app/
 │   ├── page.tsx                # Landing page ("/")
-│   ├── file/
-│   │   ├── page.tsx            # File input page ("/file")
+│   ├── f/
+│   │   ├── page.tsx            # File input page ("/f")
 │   │   └── [name]/
-│   │       └── page.tsx        # File view/download ("/file/:name")
-│   ├── note/
-│   │   ├── page.tsx            # Note input page ("/note")
+│   │       └── page.tsx        # File view/download ("/f/:name")
+│   ├── n/
+│   │   ├── page.tsx            # Note input page ("/n")
 │   │   └── [name]/
-│   │       └── page.tsx        # Note view ("/note/:name")
+│   │       └── page.tsx        # Note view ("/n/:name")
 │   └── layout.tsx              # App-wide layout
 ├── lib/
 │   ├── db.ts                   # DB connection
@@ -67,7 +67,7 @@ A **no-login**, fast-sharing web app for instant text and file drops — accessi
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/yourusername/dr0p.git
+git clone https://github.com/NitheshAlva/dr0p.git
 cd dr0p
 ````
 
@@ -103,8 +103,8 @@ Visit `http://localhost:3000` to view the app locally.
 
 ## 🧪 Example URLs
 
-* 📝 Text Note: [https://dr0p.live/note/meeting](https://dr0p.live/note/meeting)
-* 📁 File Drop: [https://dr0p.live/file/report](https://dr0p.live/file/report)
+* 📝 Text Note: [https://dr0p.live/n/meeting](https://dr0p.live/n/meeting)
+* 📁 File Drop: [https://dr0p.live/f/report](https://dr0p.live/f/report)
 
 ---
 

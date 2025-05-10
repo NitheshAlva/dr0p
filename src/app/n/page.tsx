@@ -6,20 +6,20 @@ import { toast } from 'sonner'
 import { nameValidation } from '@/schema/name.schema'
 import { SlideButton } from '@/components/ui/get-started-button'
 
-export default function CreateFilePage() {
+export default function CreateNotePage() {
   const [name, setName] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const router = useRouter()
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e:any) => {
     if (e.key === 'Enter') {
       onSubmit()
     }
   }
-  
+
   const onSubmit = () => {
     if (!name.trim()) {
-      toast.error('Please enter a file name')
+      toast.error('Please enter a note name')
       return
     }
 
@@ -30,9 +30,9 @@ export default function CreateFilePage() {
       const valid = nameValidation.safeParse(slug)
       
       if (valid.success) {
-        router.push(`/file/${slug}`)
+        router.push(`/n/${slug}`)
       } else {
-        toast.error(valid.error.errors[0]?.message || 'Invalid file name')
+        toast.error(valid.error.errors[0]?.message || 'Invalid note name')
       }
     } catch (error) {
       toast.error('Something went wrong. Please try again.')
@@ -47,10 +47,10 @@ export default function CreateFilePage() {
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
           <h1 className="text-4xl md:text-5xl font-bold">
-            Upload or Access a File
+            Create or Access a Note
           </h1>
           <p className="mt-4 text-xl text-muted-foreground">
-            Type a name to upload or retrieve a file
+            Type a name and click &quot;Go to Note&quot; to create or access it
           </p>
           
           <div className="mt-8 w-full max-w-md">
@@ -61,15 +61,15 @@ export default function CreateFilePage() {
                   onChange={(e) => setName(e.target.value)}
                   onKeyDown={handleKeyDown}
                   type="text"
-                  placeholder="Enter file name..."
+                  placeholder="Enter note name..."
                   className="w-full px-4 py-3 rounded-lg border border-input focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                  aria-label="File name"
+                  aria-label="Note name"
                 />
               </div>
               <div className="flex-shrink-0">
                 <SlideButton 
                   onClick={onSubmit}
-                  text="Go to File"
+                  text="Go to Note"
                   disabled={isSubmitting || !name.trim()}
                 />
               </div>
@@ -82,10 +82,10 @@ export default function CreateFilePage() {
                 Example Use
               </h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li>• If you name your file <span className="font-medium">&quot;resume&quot;</span></li>
-                <li>• It will be accessible at <span className="font-medium">drop.live/file/resume</span></li>
+                <li>• If you name your note <span className="font-medium">&quot;shopping list&quot;</span></li>
+                <li>• It will be accessible at <span className="font-medium">drop.live/n/shopping-list</span></li>
                 <li>• Share this URL with others to access</li>
-                <li>• Your file will be available until its expiration date</li>
+                <li>• Your note will be available until its expiration date</li>
               </ul>
             </div>
             
@@ -94,9 +94,9 @@ export default function CreateFilePage() {
                 Tips
               </h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li>• Maximum file size: <span className="font-medium">10MB</span></li>
-                <li>• Protect sensitive files with a password</li>
-                <li>• Set an expiration date for temporary files</li>
+                <li>• Use simple, memorable names like <span className="font-medium">&quot;shopping-list&quot;</span></li>
+                <li>• Protect sensitive notes with a password</li>
+                <li>• Set an expiration date for temporary notes</li>
                 <li>• Special characters are not allowed and spaces will be converted to hyphens</li>
               </ul>
             </div>

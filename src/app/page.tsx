@@ -31,13 +31,13 @@ export default function Home() {
               </div>
             </div>
             <div className=" flex flex-col sm:flex-row gap-4 mt-12 z-10 ">
-              <Link href="/note">
+              <Link href="/n">
                 <Button size="lg" className="gap-2 cursor-pointer">
                   <FileText className="h-5 w-5" />
                   Create a Note
                 </Button>
               </Link>
-              <Link href="/file">
+              <Link href="/f">
                 <Button size="lg" variant="outline" className="gap-2 cursor-pointer">
                   <Upload className="h-5 w-5" />
                   Upload a File
@@ -109,7 +109,7 @@ export default function Home() {
           />
 
           <div className="flex justify-center mt-12">
-            <Link href="/note/" >
+            <Link href="/n/" >
               <SlideButton/>
             </Link>
           </div>

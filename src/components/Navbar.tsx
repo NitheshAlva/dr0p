@@ -39,10 +39,10 @@ export default function Navbar() {
             />
           </Link>
           <nav className="hidden md:flex gap-6">
-            <NavLink href="/note" icon={<FileText className="mr-2 h-4 w-4" />} pathname={pathname}>
+            <NavLink href="/n" icon={<FileText className="mr-2 h-4 w-4" />} pathname={pathname}>
               Note
             </NavLink>
-            <NavLink href="/file" icon={<Upload className="mr-2 h-4 w-4" />} pathname={pathname}>
+            <NavLink href="/f" icon={<Upload className="mr-2 h-4 w-4" />} pathname={pathname}>
               File
             </NavLink>
           </nav>

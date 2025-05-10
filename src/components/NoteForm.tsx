@@ -115,8 +115,7 @@ export default function NoteForm({name}:{name:string}) {
       
     // Enhanced QR Code Page
     if (showQR) {
-        const noteUrl = `dr0p.live/note/${name}`;
-        const fullUrl = `https://${noteUrl}`;
+        const fullUrl = `https://dr0p.live/n/${name}`;
         
         const copyToClipboard = () => {
           navigator.clipboard.writeText(fullUrl);
@@ -151,7 +150,7 @@ export default function NoteForm({name}:{name:string}) {
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button variant="outline" onClick={() => window.location.href = "/"}>
+                  <Button variant="outline" onClick={() => window.location.href = "/n"}>
                     <Plus className="h-4 w-4 mr-2" />
                     Create Another
                   </Button>

@@ -2,7 +2,7 @@ export const steps = [
     {
       step: "Step 1",
       title: "Choose a unique name",
-      content: "Pick a simple custom path like /note/idea or /file/receipt. This becomes your shareable link.",
+      content: "Pick a simple custom path like /n/idea or /f/receipt. This becomes your shareable link.",
       image: "/create-step-design.png",
     },
     {

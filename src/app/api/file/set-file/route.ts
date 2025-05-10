@@ -8,6 +8,7 @@ export const POST=async(request:Request)=>{
             if(!name?.trim()||!key?.trim()||!fileName?.trim()||!contentType?.trim()){
                 return NextResponse.json({success:false,message:"invalid input for route name or null file key"},{status:400})
             }
+            console.log(name,key)
             const existingFile = await prisma.files.findUnique({
                 where:{name}
             })

@@ -79,7 +79,7 @@ export default function FileForm({name}:{name:string}) {
         setIsSubmitting(true)
         try {
             const fileName = data.file[0].name,
-                  contentType = data.file[0].type||lookup(fileName),
+                  contentType = data.file[0].type||lookup(fileName) || 'application/octet-stream',
                   contentLength = data.file[0].size
                   
             const urlResp = await axios.get(`/api/file/get-upload-url?fileName=${data.file[0].name}&contentLength=${contentLength}&contentType=${contentType}`)
@@ -136,8 +136,7 @@ export default function FileForm({name}:{name:string}) {
   
     // QR Code Success Page
     if (showQR) {
-        const fileUrl = `dr0p.live/file/${name}`;
-        const fullUrl = `https://${fileUrl}`;
+        const fullUrl = `https://dr0p.live/f/${name}`;
         
         const copyToClipboard = () => {
             navigator.clipboard.writeText(fullUrl);
@@ -172,7 +171,7 @@ export default function FileForm({name}:{name:string}) {
                         </div>
                         
                         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                            <Button variant="outline" onClick={() => window.location.href = "/"} className="w-full sm:w-auto">
+                            <Button variant="outline" onClick={() => window.location.href = "/f"} className="w-full sm:w-auto">
                                 <Plus className="h-4 w-4 mr-2" />
                                 Create Another
                             </Button>

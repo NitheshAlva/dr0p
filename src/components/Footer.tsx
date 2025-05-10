@@ -20,14 +20,14 @@ export default function Footer() {
           {/* Essential links */}
           <div className="flex items-center space-x-8 mb-6 md:mb-0">
             <Link 
-              href="/note" 
+              href="/n" 
               className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
             >
               <FileText className="h-5 w-5" />
               <span>Note</span>
             </Link>
             <Link 
-              href="/file" 
+              href="/f" 
               className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
             >
               <Upload className="h-5 w-5" />
