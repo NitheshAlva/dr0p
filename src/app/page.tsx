@@ -1,10 +1,8 @@
-'use client';
-
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { FileText, Upload} from "lucide-react"
 import { FlipWords } from "@/components/ui/flip-words";
-import { FeatureSteps } from "@/components/feature-section";
+import { FeatureSteps } from "@/components/FeatureSection";
 import { SlideButton } from "@/components/ui/get-started-button";
 import Footer from "@/components/Footer";
 import { features } from "@/data/features";

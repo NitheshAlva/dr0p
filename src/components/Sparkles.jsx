@@ -3,7 +3,6 @@
 import { useEffect, useId, useState, useContext } from "react"
 import Particles, { initParticlesEngine } from "@tsparticles/react"
 import { loadSlim } from "@tsparticles/slim"
-import { useTheme } from "next-themes"
 
 export function Sparkles({
   className,
@@ -22,14 +21,8 @@ export function Sparkles({
   options = {},
 }) {
   const [isReady, setIsReady] = useState(false)
-  const { theme, resolvedTheme } = useTheme()
-  
-  // Determine the current theme
-  const isDarkTheme = theme === "dark" || resolvedTheme === "dark"
-  
-  // Set colors based on theme
-  const color = isDarkTheme ? darkModeColor : lightModeColor
-  const background = isDarkTheme ? darkModeBackground : lightModeBackground
+  const color = darkModeColor
+  const background = darkModeBackground
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {

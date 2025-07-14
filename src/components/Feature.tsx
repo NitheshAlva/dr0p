@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 
-
 export const  Feature = ({
     title,
     description,

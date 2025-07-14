@@ -1,7 +1,4 @@
 import {IconAdjustmentsBolt, IconCloud, IconCurrencyDollar, IconEaseInOut, IconHeart, IconLock, IconRouteAltLeft, IconTerminal2} from '@tabler/icons-react'
-import React from 'react';
-
-
 
 export const features = [
     {

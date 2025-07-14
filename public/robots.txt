@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://dr0p.live
+
+# Sitemaps
+Sitemap: https://dr0p.live/sitemap.xml
